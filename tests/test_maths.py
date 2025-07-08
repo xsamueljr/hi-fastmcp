@@ -1,18 +1,12 @@
-from fastmcp import Client
 import pytest
 
-from main import mcp
-
-
-@pytest.fixture
-def client() -> Client:
-    return Client(mcp)
+from tests.setups import McpSetup
 
 
 @pytest.mark.asyncio
-async def test_quadratic_equation_works(client: Client):
-    async with client:
-        result = await client.call_tool("quadratic_equation", {"a": 1, "b": -5, "c": 6})
+async def test_quadratic_equation_works(mcp_setup: McpSetup):
+    async with mcp_setup.client:
+        result = await mcp_setup.client.call_tool("quadratic_equation", {"a": 1, "b": -5, "c": 6})
 
         print(type(result.data))
 
