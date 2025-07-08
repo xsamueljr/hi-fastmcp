@@ -2,7 +2,7 @@ from github.domain.service import GitHubServicePort
 from github.domain.user import GitHubUser
 
 
-class GetGiHubUserInfoUseCase:
+class GetGitHubUserInfoUseCase:
 
     def __init__(self, service: GitHubServicePort) -> None:
         self.__service = service
