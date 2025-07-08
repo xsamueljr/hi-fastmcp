@@ -2,9 +2,11 @@ import asyncio
 
 from fastmcp import Client
 
-from main import mcp
+from github.infrastructure.real_github_service import RealGitHubService
+from main import create_app
 
 
+mcp = create_app(RealGitHubService())
 client = Client(mcp)
 
 async def main():
@@ -17,6 +19,9 @@ async def main():
         gusy_profile = await mcp._mcp_call_tool("get_user_info", {"username": "ggusyyy"})
 
         print(gusy_profile)
+        print(gusy_profile[0])
+        print(gusy_profile[1])
+
         # print(gusy_profile)
 
 
